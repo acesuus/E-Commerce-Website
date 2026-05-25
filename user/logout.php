@@ -1,5 +1,6 @@
 <?php
 // user/logout.php - Logout & Session Destroy
+require_once __DIR__ . '/../config/database.php';
 require_once __DIR__ . '/../includes/session.php';
 
 // Unset all session variables

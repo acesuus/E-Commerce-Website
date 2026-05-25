@@ -1,10 +1,20 @@
 <?php
 // config/database.php
 
-// Base URL - change this to match your deployment
-// If project is at http://localhost/E-Commerce-Website/ set to '/E-Commerce-Website'
-// If project is at http://localhost/ (document root) set to ''
-define('BASE_URL', '');
+// Auto-detect Base URL from the project directory
+// Works whether project is at document root or in a subdirectory (e.g. /E-Commerce-Website)
+if (!defined('BASE_URL')) {
+    $baseUrl = '';
+    if (isset($_SERVER['SCRIPT_NAME'])) {
+        // Find the project root relative to the document root
+        $projectDir = dirname(__DIR__); // e.g. E:\xampp\htdocs\E-Commerce-Website
+        $docRoot = realpath($_SERVER['DOCUMENT_ROOT']); // e.g. E:\xampp\htdocs
+        if ($docRoot && strpos(realpath($projectDir), $docRoot) === 0) {
+            $baseUrl = str_replace('\\', '/', substr(realpath($projectDir), strlen($docRoot)));
+        }
+    }
+    define('BASE_URL', rtrim($baseUrl, '/'));
+}
 
 $host = '127.0.0.1';
 $dbname = 'ecommerce_website';
