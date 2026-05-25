@@ -35,7 +35,7 @@
                 <div class="confirmation-items">
                     <?php foreach ($order_items as $item): ?>
                         <div class="confirmation-item">
-                            <div class="conf-item-thumb"><?php if (!empty($item['product_image'])): ?><img src="/<?php echo htmlspecialchars($item['product_image']); ?>" alt=""><?php else: ?><i class="fas fa-box-open"></i><?php endif; ?></div>
+                            <div class="conf-item-thumb"><?php if (!empty($item['product_image'])): ?><img src="<?php echo url('/' . htmlspecialchars($item['product_image'])); ?>" alt=""><?php else: ?><i class="fas fa-box-open"></i><?php endif; ?></div>
                             <div class="conf-item-info"><span class="conf-item-name"><?php echo htmlspecialchars($item['product_name']); ?></span><span class="conf-item-meta"><?php echo htmlspecialchars($item['category_name'] ?? ''); ?> | Qty: <?php echo $item['quantity']; ?> x $<?php echo number_format($item['unit_price'], 2); ?></span></div>
                             <div class="conf-item-price">$<?php echo number_format($item['quantity'] * $item['unit_price'], 2); ?></div>
                         </div>
@@ -47,8 +47,8 @@
         </div>
 
         <div class="confirmation-actions">
-            <a href="/user/orders.php" class="btn-view-orders"><i class="fas fa-list"></i> View All Orders</a>
-            <a href="/products.php" class="btn-continue-shopping-conf"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>
+            <a href="<?php echo url('/user/orders.php'); ?>" class="btn-view-orders"><i class="fas fa-list"></i> View All Orders</a>
+            <a href="<?php echo url('/products.php'); ?>" class="btn-continue-shopping-conf"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>
         </div>
     </div>
 

@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setFlashMessage('success', 'Cart cleared successfully.');
     }
 
-    header('Location: /cart.php');
+    header('Location: ' . url('/cart.php'));
     exit;
 }
 

@@ -22,6 +22,6 @@ session_start();
 setFlashMessage('success', 'You have been logged out successfully.');
 
 // Redirect to login page
-header('Location: /user/login.php');
+header('Location: ' . url('/user/login.php'));
 exit;
 ?>

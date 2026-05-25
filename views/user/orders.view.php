@@ -3,7 +3,7 @@
 
     <div class="page-container">
         <?php if ($order_detail): ?>
-            <a href="/user/orders.php" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Orders</a>
+            <a href="<?php echo url('/user/orders.php'); ?>" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Orders</a>
             <div class="order-detail-header">
                 <div>
                     <h1>Order #<?php echo str_pad($order_detail['order_id'], 6, '0', STR_PAD_LEFT); ?></h1>
@@ -19,9 +19,9 @@
                     <div class="order-items-list">
                         <?php foreach ($order_items as $item): ?>
                             <div class="order-item-row">
-                                <div class="order-item-thumb"><?php if (!empty($item['product_image'])): ?><img src="/<?php echo htmlspecialchars($item['product_image']); ?>" alt=""><?php else: ?><i class="fas fa-box-open"></i><?php endif; ?></div>
+                                <div class="order-item-thumb"><?php if (!empty($item['product_image'])): ?><img src="<?php echo url('/' . htmlspecialchars($item['product_image'])); ?>" alt=""><?php else: ?><i class="fas fa-box-open"></i><?php endif; ?></div>
                                 <div class="order-item-info">
-                                    <a href="/product_detail.php?id=<?php echo $item['product_id']; ?>" class="order-item-name"><?php echo htmlspecialchars($item['product_name']); ?></a>
+                                    <a href="<?php echo url('/product_detail.php?id=' . $item['product_id']); ?>" class="order-item-name"><?php echo htmlspecialchars($item['product_name']); ?></a>
                                     <span class="order-item-category"><?php echo htmlspecialchars($item['category_name'] ?? 'Uncategorized'); ?></span>
                                     <span class="order-item-unit">$<?php echo number_format($item['unit_price'], 2); ?> x <?php echo $item['quantity']; ?></span>
                                 </div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="order-card-footer">
                                 <span class="order-card-total">Total: <strong>$<?php echo number_format($order['total_amount'], 2); ?></strong></span>
-                                <a href="/user/orders.php?view=<?php echo $order['order_id']; ?>" class="btn-view-order"><i class="fas fa-eye"></i> View Details</a>
+                                <a href="<?php echo url('/user/orders.php?view=' . $order['order_id']); ?>" class="btn-view-order"><i class="fas fa-eye"></i> View Details</a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -102,7 +102,7 @@
                     <i class="fas fa-receipt"></i>
                     <h3>No orders yet</h3>
                     <p>You haven't placed any orders. Start shopping to see your order history here!</p>
-                    <a href="/products.php" class="btn-shop-now"><i class="fas fa-shopping-bag"></i> Browse Products</a>
+                    <a href="<?php echo url('/products.php'); ?>" class="btn-shop-now"><i class="fas fa-shopping-bag"></i> Browse Products</a>
                 </div>
             <?php endif; ?>
         <?php endif; ?>

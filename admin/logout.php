@@ -22,6 +22,6 @@ session_start();
 setFlashMessage('success', 'Admin logged out successfully.');
 
 // Redirect to admin login
-header('Location: /admin/login.php');
+header('Location: ' . url('/admin/login.php'));
 exit;
 ?>

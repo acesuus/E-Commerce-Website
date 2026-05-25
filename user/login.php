@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $update->execute([$new_hash, $user['user_id']]);
                         }
 
-                        $redirect = $_SESSION['redirect_after_login'] ?? '/index.php';
+                        $redirect = $_SESSION['redirect_after_login'] ?? url('/index.php');
                         unset($_SESSION['redirect_after_login']);
                         header('Location: ' . $redirect);
                         exit;

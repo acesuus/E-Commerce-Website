@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$full_name, $email, $password_hash, $phone ?: null, $address ?: null]);
 
                 setFlashMessage('success', 'Registration successful! Please log in with your credentials.');
-                header('Location: /user/login.php');
+                header('Location: ' . url('/user/login.php'));
                 exit;
             } catch (PDOException $e) {
                 $errors[] = 'Registration failed. Please try again later.';
