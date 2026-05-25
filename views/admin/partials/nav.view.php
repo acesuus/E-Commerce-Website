@@ -10,6 +10,9 @@
                 <a href="<?php echo url('/admin/products.php'); ?>" class="<?php echo ($activePage ?? '') === 'products' ? 'active' : ''; ?>">
                     <i class="fas fa-box"></i> Products
                 </a>
+                <a href="<?php echo url('/admin/categories.php'); ?>" class="<?php echo ($activePage ?? '') === 'categories' ? 'active' : ''; ?>">
+                    <i class="fas fa-folder-open"></i> Categories
+                </a>
                 <a href="<?php echo url('/admin/orders.php'); ?>" class="<?php echo ($activePage ?? '') === 'orders' ? 'active' : ''; ?>">
                     <i class="fas fa-shopping-bag"></i> Orders
                 </a>
