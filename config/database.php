@@ -1,5 +1,11 @@
 <?php
 // config/database.php
+
+// Base URL - change this to match your deployment
+// If project is at http://localhost/E-Commerce-Website/ set to '/E-Commerce-Website'
+// If project is at http://localhost/ (document root) set to ''
+define('BASE_URL', '');
+
 $host = '127.0.0.1';
 $dbname = 'ecommerce_website';
 $username = 'root';
@@ -15,5 +21,13 @@ try {
     }
 } catch(PDOException $e) {
     die("Connection failed: " . $e->getMessage());
+}
+
+/**
+ * Generate a URL relative to the project base
+ * Usage: url('/products.php') or url('/css/style.css')
+ */
+function url($path = '') {
+    return BASE_URL . $path;
 }
 ?>

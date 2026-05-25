@@ -16,10 +16,10 @@
             <div class="alert alert-error"><i class="fas fa-exclamation-circle"></i> <span><?php echo $errors[0] ?? 'Please fix the errors below.'; ?></span></div>
         <?php endif; ?>
         <?php if (!empty($unavailable_items)): ?>
-            <div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> <span>Some items are unavailable. Please <a href="/cart.php" style="color:#975a16;font-weight:600;">update your cart</a>.</span></div>
+            <div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> <span>Some items are unavailable. Please <a href="<?php echo url('/cart.php'); ?>" style="color:#975a16;font-weight:600;">update your cart</a>.</span></div>
         <?php endif; ?>
 
-        <form method="POST" action="/checkout.php" id="checkoutForm" novalidate>
+        <form method="POST" action="<?php echo url('/checkout.php'); ?>" id="checkoutForm" novalidate>
             <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
             <div class="checkout-layout">
                 <div class="checkout-form-section">
@@ -60,7 +60,7 @@
                             <?php foreach ($cart_items as $item): ?>
                                 <?php if ($item['status'] === 'available'): ?>
                                 <div class="checkout-item">
-                                    <div class="checkout-item-thumb"><?php if (!empty($item['product_image'])): ?><img src="/<?php echo htmlspecialchars($item['product_image']); ?>" alt=""><?php else: ?><i class="fas fa-box-open"></i><?php endif; ?></div>
+                                    <div class="checkout-item-thumb"><?php if (!empty($item['product_image'])): ?><img src="<?php echo url('/' . htmlspecialchars($item['product_image'])); ?>" alt=""><?php else: ?><i class="fas fa-box-open"></i><?php endif; ?></div>
                                     <div class="checkout-item-info"><span class="checkout-item-name"><?php echo htmlspecialchars($item['product_name']); ?></span><span class="checkout-item-qty">Qty: <?php echo $item['quantity']; ?></span></div>
                                     <div class="checkout-item-price">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></div>
                                 </div>
@@ -74,7 +74,7 @@
                         <div class="summary-row summary-total"><span>Total</span><span>$<?php echo number_format($cart_total, 2); ?></span></div>
                         <button type="submit" class="btn-place-order" <?php echo !empty($unavailable_items) ? 'disabled' : ''; ?>><i class="fas fa-check-circle"></i> Place Order</button>
                         <p class="order-note"><i class="fas fa-shield-alt"></i> No real payment will be processed.</p>
-                        <a href="/cart.php" class="btn-back-to-cart"><i class="fas fa-arrow-left"></i> Back to Cart</a>
+                        <a href="<?php echo url('/cart.php'); ?>" class="btn-back-to-cart"><i class="fas fa-arrow-left"></i> Back to Cart</a>
                     </div>
                 </div>
             </div>

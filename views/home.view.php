@@ -5,7 +5,7 @@
     <section class="hero-section">
         <h1>Welcome to E-Store</h1>
         <p>Discover amazing products at great prices. Shop electronics, clothing, books, and more.</p>
-        <a href="/products.php" class="hero-btn">
+        <a href="<?php echo url('/products.php'); ?>" class="hero-btn">
             <i class="fas fa-shopping-bag"></i> Shop Now
         </a>
     </section>
@@ -19,7 +19,7 @@
                 </h2>
                 <div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                     <?php foreach ($categories as $cat): ?>
-                        <a href="/products.php?category=<?php echo $cat['category_id']; ?>" class="product-card" style="text-align:center;">
+                        <a href="<?php echo url('/products.php?category=' . $cat['category_id']); ?>" class="product-card" style="text-align:center;">
                             <div class="product-info" style="padding:30px 20px;">
                                 <h3 class="product-name" style="font-size:18px; margin-bottom:8px;">
                                     <?php echo htmlspecialchars($cat['category_name']); ?>
@@ -40,7 +40,7 @@
                 <h2 class="section-title" style="margin-bottom:0;">
                     <i class="fas fa-star"></i> Featured Products
                 </h2>
-                <a href="/products.php" class="view-all-link">
+                <a href="<?php echo url('/products.php'); ?>" class="view-all-link">
                     View All <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -49,10 +49,10 @@
                 <?php if (!empty($featured_products)): ?>
                     <?php foreach ($featured_products as $product): ?>
                         <div class="product-card">
-                            <a href="/product_detail.php?id=<?php echo $product['product_id']; ?>">
+                            <a href="<?php echo url('/product_detail.php?id=' . $product['product_id']); ?>">
                                 <div class="product-image">
                                     <?php if (!empty($product['product_image']) && file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . $product['product_image'])): ?>
-                                        <img src="/<?php echo htmlspecialchars($product['product_image']); ?>" 
+                                        <img src="<?php echo url('/' . htmlspecialchars($product['product_image'])); ?>" 
                                              alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                     <?php else: ?>
                                         <i class="fas fa-box-open placeholder-icon"></i>
@@ -64,13 +64,13 @@
                             </a>
                             <div class="product-info">
                                 <span class="product-category"><?php echo htmlspecialchars($product['category_name'] ?? 'Uncategorized'); ?></span>
-                                <a href="/product_detail.php?id=<?php echo $product['product_id']; ?>">
+                                <a href="<?php echo url('/product_detail.php?id=' . $product['product_id']); ?>">
                                     <h3 class="product-name"><?php echo htmlspecialchars($product['product_name']); ?></h3>
                                 </a>
                                 <p class="product-description"><?php echo htmlspecialchars($product['description'] ?? 'No description available.'); ?></p>
                                 <div class="product-footer">
                                     <span class="product-price">$<?php echo number_format($product['price'], 2); ?></span>
-                                    <a href="/product_detail.php?id=<?php echo $product['product_id']; ?>" class="btn-view">View Details</a>
+                                    <a href="<?php echo url('/product_detail.php?id=' . $product['product_id']); ?>" class="btn-view">View Details</a>
                                 </div>
                             </div>
                         </div>

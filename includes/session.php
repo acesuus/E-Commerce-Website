@@ -5,6 +5,20 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Base URL constant - set in config/database.php, fallback if not defined
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '');
+}
+
+/**
+ * Generate a URL relative to the project base
+ */
+if (!function_exists('url')) {
+    function url($path = '') {
+        return BASE_URL . $path;
+    }
+}
+
 /**
  * Check if user is logged in
  */
@@ -32,7 +46,7 @@ function isCustomer() {
 function requireLogin() {
     if (!isLoggedIn()) {
         $_SESSION['error'] = 'Please log in to access this page.';
-        header('Location: /user/login.php');
+        header('Location: ' . url('/user/login.php'));
         exit;
     }
 }
@@ -43,7 +57,7 @@ function requireLogin() {
 function requireAdmin() {
     if (!isAdmin()) {
         $_SESSION['error'] = 'Access denied. Admin privileges required.';
-        header('Location: /admin/login.php');
+        header('Location: ' . url('/admin/login.php'));
         exit;
     }
 }
@@ -54,9 +68,9 @@ function requireAdmin() {
 function redirectIfLoggedIn() {
     if (isLoggedIn()) {
         if (isAdmin()) {
-            header('Location: /admin/index.php');
+            header('Location: ' . url('/admin/index.php'));
         } else {
-            header('Location: /index.php');
+            header('Location: ' . url('/index.php'));
         }
         exit;
     }

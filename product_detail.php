@@ -6,13 +6,13 @@ require_once __DIR__ . '/includes/session.php';
 $activePage = 'products';
 $product_id = intval($_GET['id'] ?? 0);
 
-if ($product_id <= 0) { header('Location: /products.php'); exit; }
+if ($product_id <= 0) { header('Location: ' . url('/products.php')); exit; }
 
 $stmt = $pdo->prepare("SELECT p.*, c.category_name FROM products p LEFT JOIN categories c ON p.category_id = c.category_id WHERE p.product_id = ?");
 $stmt->execute([$product_id]);
 $product = $stmt->fetch();
 
-if (!$product) { header('Location: /products.php'); exit; }
+if (!$product) { header('Location: ' . url('/products.php')); exit; }
 
 $pageTitle = $product['product_name'];
 

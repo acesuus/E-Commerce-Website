@@ -5,7 +5,7 @@ require_once __DIR__ . '/../includes/session.php';
 
 // Redirect if already logged in as admin
 if (isAdmin()) {
-    header('Location: /admin/index.php');
+    header('Location: ' . url('/admin/index.php'));
     exit;
 }
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $update->execute([$new_hash, $admin['user_id']]);
                         }
 
-                        header('Location: /admin/index.php');
+                        header('Location: ' . url('/admin/index.php'));
                         exit;
                     } else {
                         $errors[] = 'Invalid admin credentials. Access denied.';

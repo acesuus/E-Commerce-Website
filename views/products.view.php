@@ -16,7 +16,7 @@
         </div>
 
         <!-- Search & Filter Bar -->
-        <form method="GET" action="/products.php" class="search-filter-bar" id="filterForm">
+        <form method="GET" action="<?php echo url('/products.php'); ?>" class="search-filter-bar" id="filterForm">
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" name="search" placeholder="Search products..." 
@@ -40,7 +40,7 @@
                 </select>
                 <button type="submit" class="filter-btn"><i class="fas fa-search"></i> Search</button>
                 <?php if (!empty($search) || $category_id > 0 || $sort !== 'newest'): ?>
-                    <a href="/products.php" class="filter-btn reset"><i class="fas fa-times"></i> Clear</a>
+                    <a href="<?php echo url('/products.php'); ?>" class="filter-btn reset"><i class="fas fa-times"></i> Clear</a>
                 <?php endif; ?>
             </div>
         </form>
@@ -56,10 +56,10 @@
             <?php if ($product_count > 0): ?>
                 <?php foreach ($products as $product): ?>
                     <div class="product-card">
-                        <a href="/product_detail.php?id=<?php echo $product['product_id']; ?>">
+                        <a href="<?php echo url('/product_detail.php?id=' . $product['product_id']); ?>">
                             <div class="product-image">
                                 <?php if (!empty($product['product_image'])): ?>
-                                    <img src="/<?php echo htmlspecialchars($product['product_image']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                                    <img src="<?php echo url('/' . htmlspecialchars($product['product_image'])); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <?php else: ?>
                                     <i class="fas fa-box-open placeholder-icon"></i>
                                 <?php endif; ?>
@@ -72,14 +72,14 @@
                         </a>
                         <div class="product-info">
                             <span class="product-category"><?php echo htmlspecialchars($product['category_name'] ?? 'Uncategorized'); ?></span>
-                            <a href="/product_detail.php?id=<?php echo $product['product_id']; ?>">
+                            <a href="<?php echo url('/product_detail.php?id=' . $product['product_id']); ?>">
                                 <h3 class="product-name"><?php echo htmlspecialchars($product['product_name']); ?></h3>
                             </a>
                             <p class="product-description"><?php echo htmlspecialchars($product['description'] ?? 'No description available.'); ?></p>
                             <div class="product-footer">
                                 <span class="product-price">$<?php echo number_format($product['price'], 2); ?></span>
                                 <?php if ($product['status'] === 'available'): ?>
-                                    <a href="/product_detail.php?id=<?php echo $product['product_id']; ?>" class="btn-view">View Details</a>
+                                    <a href="<?php echo url('/product_detail.php?id=' . $product['product_id']); ?>" class="btn-view">View Details</a>
                                 <?php else: ?>
                                     <span class="product-stock out">Out of Stock</span>
                                 <?php endif; ?>
@@ -92,7 +92,7 @@
                     <i class="fas fa-search"></i>
                     <h3>No products found</h3>
                     <p><?php echo !empty($search) ? 'No results for "' . htmlspecialchars($search) . '". Try a different search term.' : 'No products match your current filters.'; ?></p>
-                    <a href="/products.php" class="filter-btn" style="display:inline-block; margin-top:16px; width:auto;">View All Products</a>
+                    <a href="<?php echo url('/products.php'); ?>" class="filter-btn" style="display:inline-block; margin-top:16px; width:auto;">View All Products</a>
                 </div>
             <?php endif; ?>
         </div>

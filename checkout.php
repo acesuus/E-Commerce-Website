@@ -4,9 +4,9 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/session.php';
 
 if (!isLoggedIn()) {
-    $_SESSION['redirect_after_login'] = '/checkout.php';
+    $_SESSION['redirect_after_login'] = url('/checkout.php');
     setFlashMessage('error', 'Please log in to proceed with checkout.');
-    header('Location: /user/login.php');
+    header('Location: ' . url('/user/login.php'));
     exit;
 }
 
@@ -23,7 +23,7 @@ $cart_stmt = $pdo->prepare("SELECT c.cart_id, c.quantity, p.product_id, p.produc
 $cart_stmt->execute([$user_id]);
 $cart_items = $cart_stmt->fetchAll();
 
-if (empty($cart_items)) { setFlashMessage('error', 'Your cart is empty.'); header('Location: /cart.php'); exit; }
+if (empty($cart_items)) { setFlashMessage('error', 'Your cart is empty.'); header('Location: ' . url('/cart.php')); exit; }
 
 $cart_total = 0; $cart_count = 0; $unavailable_items = [];
 foreach ($cart_items as $item) {
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $pdo->prepare("DELETE FROM cart WHERE user_id = ?")->execute([$user_id]);
                 $pdo->commit();
                 $_SESSION['last_order_id'] = $order_id;
-                header('Location: /order_confirmation.php?order=' . $order_id);
+                header('Location: ' . url('/order_confirmation.php?order=' . $order_id));
                 exit;
             } catch (PDOException $e) { $pdo->rollBack(); $errors[] = 'Order could not be processed. Please try again.'; }
         }
