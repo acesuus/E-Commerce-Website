@@ -17,34 +17,34 @@
                 <h1>Dashboard</h1>
                 <p>Welcome back, <?php echo htmlspecialchars($_SESSION['full_name']); ?>. Here's your store overview.</p>
             </div>
-            <span class="admin-date"><i class="fas fa-calendar-alt"></i> <?php echo date('F j, Y'); ?></span>
+            <span class="admin-date"><?php echo date('F j, Y'); ?></span>
         </div>
 
         <!-- Stats Cards -->
         <div class="admin-stats-grid">
             <div class="admin-stat-card stat-revenue">
-                <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                <div class="stat-icon"></div>
                 <div class="stat-info">
                     <span class="stat-value">$<?php echo number_format($total_revenue, 2); ?></span>
                     <span class="stat-label">Total Revenue</span>
                 </div>
             </div>
             <div class="admin-stat-card stat-orders">
-                <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                <div class="stat-icon"></div>
                 <div class="stat-info">
                     <span class="stat-value"><?php echo $total_orders; ?></span>
                     <span class="stat-label">Total Orders</span>
                 </div>
             </div>
             <div class="admin-stat-card stat-products">
-                <div class="stat-icon"><i class="fas fa-box"></i></div>
+                <div class="stat-icon"></div>
                 <div class="stat-info">
                     <span class="stat-value"><?php echo $total_products; ?></span>
                     <span class="stat-label">Products</span>
                 </div>
             </div>
             <div class="admin-stat-card stat-customers">
-                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-icon"></div>
                 <div class="stat-info">
                     <span class="stat-value"><?php echo $total_customers; ?></span>
                     <span class="stat-label">Customers</span>
@@ -67,7 +67,7 @@
             <!-- Recent Orders -->
             <div class="admin-card">
                 <div class="admin-card-header">
-                    <h3><i class="fas fa-clock"></i> Recent Orders</h3>
+                    <h3>Recent Orders</h3>
                     <a href="<?php echo url('/admin/orders.php'); ?>" class="card-link">View All</a>
                 </div>
                 <?php if (!empty($recent_orders)): ?>
@@ -95,7 +95,7 @@
                 <!-- Low Stock Alert -->
                 <div class="admin-card">
                     <div class="admin-card-header">
-                        <h3><i class="fas fa-exclamation-triangle" style="color:#dd6b20;"></i> Low Stock</h3>
+                        <h3>Low Stock</h3>
                         <a href="<?php echo url('/admin/products.php'); ?>" class="card-link">Manage</a>
                     </div>
                     <?php if (!empty($low_stock_products)): ?>
@@ -120,7 +120,7 @@
                 <!-- Top Selling -->
                 <div class="admin-card">
                     <div class="admin-card-header">
-                        <h3><i class="fas fa-trophy" style="color:#d69e2e;"></i> Top Sellers</h3>
+                        <h3>Top Sellers</h3>
                     </div>
                     <?php if (!empty($top_products)): ?>
                         <div class="admin-list">

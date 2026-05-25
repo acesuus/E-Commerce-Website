@@ -13,19 +13,18 @@
     <div class="admin-container">
         <div class="admin-welcome">
             <div><h1>Products</h1><p>Manage your product inventory</p></div>
-            <a href="<?php echo url('/admin/add_product.php'); ?>" class="btn-add-new"><i class="fas fa-plus"></i> Add Product</a>
+            <a href="<?php echo url('/admin/add_product.php'); ?>" class="btn-add-new">Add Product</a>
         </div>
 
         <?php $flash = getFlashMessage(); if ($flash): ?>
             <div class="alert alert-<?php echo $flash['type']; ?>">
-                <i class="fas fa-<?php echo $flash['type'] === 'success' ? 'check-circle' : ($flash['type'] === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'); ?>"></i>
                 <span><?php echo $flash['message']; ?></span>
             </div>
         <?php endif; ?>
 
         <div class="admin-card">
             <div class="admin-card-header">
-                <h3><i class="fas fa-box"></i> All Products (<?php echo count($products); ?>)</h3>
+                <h3>All Products (<?php echo count($products); ?>)</h3>
             </div>
             <table class="admin-table">
                 <thead>
@@ -55,8 +54,8 @@
                             <td><?php echo date('M j, Y', strtotime($product['created_at'])); ?></td>
                             <td>
                                 <div class="table-actions">
-                                    <a href="<?php echo url('/admin/edit_product.php?id=' . $product['product_id']); ?>" class="action-btn action-edit" title="Edit"><i class="fas fa-edit"></i></a>
-                                    <a href="<?php echo url('/admin/delete_product.php?id=' . $product['product_id']); ?>" class="action-btn action-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                                    <a href="<?php echo url('/admin/edit_product.php?id=' . $product['product_id']); ?>" class="action-btn action-edit" title="Edit">Edit</a>
+                                    <a href="<?php echo url('/admin/delete_product.php?id=' . $product['product_id']); ?>" class="action-btn action-delete" title="Delete">Del</a>
                                 </div>
                             </td>
                         </tr>

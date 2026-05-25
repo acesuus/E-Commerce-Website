@@ -10,19 +10,17 @@
 <body>
     <div class="auth-container admin">
         <div class="auth-card admin-card">
-            <div class="logo"><i class="fas fa-shield-alt"></i></div>
             <h1>Admin Panel</h1>
             <p class="subtitle">Authorized personnel only</p>
 
             <?php if ($flash): ?>
                 <div class="alert alert-<?php echo $flash['type'] === 'success' ? 'success' : 'error'; ?>">
-                    <i class="fas fa-<?php echo $flash['type'] === 'success' ? 'check-circle' : 'exclamation-circle'; ?>"></i>
                     <span><?php echo htmlspecialchars($flash['message']); ?></span>
                 </div>
             <?php endif; ?>
 
             <?php if (!empty($errors) && isset($errors[0])): ?>
-                <div class="alert alert-error"><i class="fas fa-exclamation-circle"></i> <span><?php echo $errors[0]; ?></span></div>
+                <div class="alert alert-error"><span><?php echo $errors[0]; ?></span></div>
             <?php endif; ?>
 
             <form method="POST" action="" id="adminLoginForm" novalidate>
@@ -30,28 +28,28 @@
 
                 <div class="form-group">
                     <label for="email">Admin Email</label>
-                    <div class="input-icon"><i class="fas fa-envelope"></i>
+                    <div class="input-icon">
                         <input type="email" id="email" name="email" placeholder="admin@ecommerce.com"
                                value="<?php echo htmlspecialchars($old_email); ?>"
                                class="<?php echo isset($errors['email']) ? 'error' : ''; ?>" required autofocus>
                     </div>
-                    <?php if (isset($errors['email'])): ?><div class="error-message show"><i class="fas fa-exclamation-circle"></i> <?php echo $errors['email']; ?></div><?php endif; ?>
+                    <?php if (isset($errors['email'])): ?><div class="error-message show"><?php echo $errors['email']; ?></div><?php endif; ?>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <div class="input-icon"><i class="fas fa-lock"></i>
+                    <div class="input-icon">
                         <input type="password" id="password" name="password" placeholder="Enter admin password"
                                class="<?php echo isset($errors['password']) ? 'error' : ''; ?>" required>
                     </div>
-                    <?php if (isset($errors['password'])): ?><div class="error-message show"><i class="fas fa-exclamation-circle"></i> <?php echo $errors['password']; ?></div><?php endif; ?>
+                    <?php if (isset($errors['password'])): ?><div class="error-message show"><?php echo $errors['password']; ?></div><?php endif; ?>
                 </div>
 
-                <button type="submit" class="btn btn-admin"><i class="fas fa-sign-in-alt"></i> Access Admin Panel</button>
+                <button type="submit" class="btn btn-admin">Access Admin Panel</button>
             </form>
 
             <div class="divider"><span>or</span></div>
-            <div class="auth-footer"><a href="<?php echo url('/user/login.php'); ?>"><i class="fas fa-arrow-left"></i> Back to Customer Login</a></div>
+            <div class="auth-footer"><a href="<?php echo url('/user/login.php'); ?>">Back to Customer Login</a></div>
         </div>
     </div>
 
