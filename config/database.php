@@ -19,7 +19,7 @@ if (!defined('BASE_URL')) {
 $host = '127.0.0.1';
 $dbname = 'ecommerce_website';
 $username = 'root';
-$password = '';
+$password = 'root';
 
 try {
     $pdo = new PDO("mysql:host=$host;port=3306;dbname=$dbname;charset=utf8mb4", $username, $password);

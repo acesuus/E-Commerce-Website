@@ -87,7 +87,7 @@
                                 <div class="order-card-meta">
                                     <div class="meta-pill"><i class="fas fa-box"></i> <?php echo $order['total_items'] ?? $order['item_count']; ?> item<?php echo ($order['total_items'] ?? $order['item_count']) != 1 ? 's' : ''; ?></div>
                                     <div class="meta-pill"><i class="fas fa-credit-card"></i> <?php echo $payment_labels[$order['payment_method']] ?? ucfirst($order['payment_method']); ?></div>
-                                    <div class="meta-pill"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars(mb_strimwidth($order['shipping_address'], 0, 40, '...')); ?></div>
+                                    <div class="meta-pill"><i class="fas fa-map-marker-alt"></i> <?php echo htmlspecialchars(substr($order['shipping_address'], 0, 40) . (strlen($order['shipping_address']) > 40 ? '...' : '')); ?></div>
                                 </div>
                             </div>
                             <div class="order-card-footer">
