@@ -12,26 +12,25 @@
 
     <div class="admin-container">
         <div class="admin-welcome">
-            <div><h1><i class="fas fa-folder-open" style="color:#667eea;"></i> Categories</h1><p>Manage product categories</p></div>
+            <div><h1>Categories</h1><p>Manage product categories</p></div>
             <span class="admin-badge"><?php echo count($categories); ?> categories</span>
         </div>
 
         <?php if ($flash): ?>
             <div class="alert alert-<?php echo $flash['type']; ?>">
-                <i class="fas fa-<?php echo $flash['type'] === 'success' ? 'check-circle' : ($flash['type'] === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'); ?>"></i>
                 <span><?php echo $flash['message']; ?></span>
             </div>
         <?php endif; ?>
 
         <?php if (!empty($errors) && isset($errors[0])): ?>
-            <div class="alert alert-error"><i class="fas fa-exclamation-circle"></i> <span><?php echo $errors[0]; ?></span></div>
+            <div class="alert alert-error"><span><?php echo $errors[0]; ?></span></div>
         <?php endif; ?>
 
         <div class="category-layout">
             <!-- Left: Category List -->
             <div class="admin-card">
                 <div class="admin-card-header">
-                    <h3><i class="fas fa-list"></i> All Categories</h3>
+                    <h3>All Categories</h3>
                 </div>
                 <table class="admin-table">
                     <thead>
@@ -51,12 +50,12 @@
                                     </td>
                                     <td>
                                         <div class="table-actions">
-                                            <a href="<?php echo url('/admin/categories.php?action=edit&id=' . $cat['category_id']); ?>" class="action-btn action-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a href="<?php echo url('/admin/categories.php?action=edit&id=' . $cat['category_id']); ?>" class="action-btn action-edit" title="Edit">Edit</a>
                                             <form method="POST" action="<?php echo url('/admin/categories.php'); ?>" style="display:inline;" onsubmit="return confirm('Delete this category?');">
                                                 <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
                                                 <input type="hidden" name="action" value="delete">
                                                 <input type="hidden" name="category_id" value="<?php echo $cat['category_id']; ?>">
-                                                <button type="submit" class="action-btn action-delete" title="Delete"><i class="fas fa-trash"></i></button>
+                                                <button type="submit" class="action-btn action-delete" title="Delete">Del</button>
                                             </form>
                                         </div>
                                     </td>
@@ -73,9 +72,9 @@
             <div class="category-form-panel">
                 <div class="admin-card">
                     <div class="admin-card-header">
-                        <h3><i class="fas fa-<?php echo $edit_category ? 'edit' : 'plus-circle'; ?>"></i> <?php echo $edit_category ? 'Edit Category' : 'Add Category'; ?></h3>
+                        <h3><?php echo $edit_category ? 'Edit Category' : 'Add Category'; ?></h3>
                         <?php if ($edit_category): ?>
-                            <a href="<?php echo url('/admin/categories.php'); ?>" class="card-link"><i class="fas fa-times"></i> Cancel</a>
+                            <a href="<?php echo url('/admin/categories.php'); ?>" class="card-link">Cancel</a>
                         <?php endif; ?>
                     </div>
                     <div class="category-form-body">
@@ -92,7 +91,7 @@
                                        value="<?php echo htmlspecialchars($edit_category ? $edit_category['category_name'] : ($_POST['category_name'] ?? '')); ?>"
                                        class="<?php echo isset($errors['category_name']) ? 'error' : ''; ?>" required>
                                 <?php if (isset($errors['category_name'])): ?>
-                                    <div class="error-message show"><i class="fas fa-exclamation-circle"></i> <?php echo $errors['category_name']; ?></div>
+                                    <div class="error-message show"><?php echo $errors['category_name']; ?></div>
                                 <?php endif; ?>
                             </div>
 
@@ -111,7 +110,6 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-<?php echo $edit_category ? 'save' : 'plus'; ?>"></i>
                                 <?php echo $edit_category ? 'Save Changes' : 'Add Category'; ?>
                             </button>
                         </form>

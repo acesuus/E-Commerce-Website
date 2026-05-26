@@ -18,7 +18,6 @@
         <!-- Search & Filter Bar -->
         <form method="GET" action="<?php echo url('/products.php'); ?>" class="search-filter-bar" id="filterForm">
             <div class="search-box">
-                <i class="fas fa-search"></i>
                 <input type="text" name="search" placeholder="Search products..." 
                        value="<?php echo htmlspecialchars($search); ?>">
             </div>
@@ -38,9 +37,9 @@
                     <option value="name_az" <?php echo $sort === 'name_az' ? 'selected' : ''; ?>>Name: A to Z</option>
                     <option value="name_za" <?php echo $sort === 'name_za' ? 'selected' : ''; ?>>Name: Z to A</option>
                 </select>
-                <button type="submit" class="filter-btn"><i class="fas fa-search"></i> Search</button>
+                <button type="submit" class="filter-btn">Search</button>
                 <?php if (!empty($search) || $category_id > 0 || $sort !== 'newest'): ?>
-                    <a href="<?php echo url('/products.php'); ?>" class="filter-btn reset"><i class="fas fa-times"></i> Clear</a>
+                    <a href="<?php echo url('/products.php'); ?>" class="filter-btn reset">Clear</a>
                 <?php endif; ?>
             </div>
         </form>

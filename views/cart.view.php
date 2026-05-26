@@ -3,13 +3,12 @@
 
     <div class="page-container">
         <div class="page-header">
-            <h1><i class="fas fa-shopping-cart" style="color:#667eea;"></i> Shopping Cart</h1>
+            <h1>Shopping Cart</h1>
             <p><?php echo $cart_count > 0 ? "You have {$cart_count} item" . ($cart_count !== 1 ? 's' : '') . " in your cart" : 'Your cart is empty'; ?></p>
         </div>
 
         <?php if ($flash): ?>
             <div class="alert alert-<?php echo $flash['type']; ?>">
-                <i class="fas fa-<?php echo $flash['type'] === 'success' ? 'check-circle' : ($flash['type'] === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'); ?>"></i>
                 <span><?php echo $flash['message']; ?></span>
             </div>
         <?php endif; ?>
@@ -61,25 +60,25 @@
                         </tbody>
                     </table>
                     <div class="cart-bottom-actions">
-                        <a href="<?php echo url('/products.php'); ?>" class="btn-continue-shopping"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+                        <a href="<?php echo url('/products.php'); ?>" class="btn-continue-shopping">Continue Shopping</a>
                         <form method="POST" action="<?php echo url('/cart.php'); ?>" style="display:inline;">
                             <input type="hidden" name="action" value="clear">
-                            <button type="submit" class="btn-clear-cart" onclick="return confirm('Clear all items?')"><i class="fas fa-trash"></i> Clear Cart</button>
+                            <button type="submit" class="btn-clear-cart" onclick="return confirm('Clear all items?')">Clear Cart</button>
                         </form>
                     </div>
                 </div>
 
                 <div class="cart-summary">
-                    <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+                    <h3>Order Summary</h3>
                     <div class="summary-row"><span>Items (<?php echo $cart_count; ?>)</span><span>$<?php echo number_format($cart_total, 2); ?></span></div>
                     <div class="summary-row"><span>Shipping</span><span class="free-shipping">Free</span></div>
                     <div class="summary-divider"></div>
                     <div class="summary-row summary-total"><span>Total</span><span>$<?php echo number_format($cart_total, 2); ?></span></div>
                     <?php if (isLoggedIn()): ?>
-                        <a href="<?php echo url('/checkout.php'); ?>" class="btn-checkout"><i class="fas fa-lock"></i> Proceed to Checkout</a>
+                        <a href="<?php echo url('/checkout.php'); ?>" class="btn-checkout">Proceed to Checkout</a>
                     <?php else: ?>
-                        <a href="<?php echo url('/user/login.php'); ?>" class="btn-checkout"><i class="fas fa-sign-in-alt"></i> Sign In to Checkout</a>
-                        <p class="checkout-note"><i class="fas fa-info-circle"></i> Please sign in to complete your purchase.</p>
+                        <a href="<?php echo url('/user/login.php'); ?>" class="btn-checkout">Sign In to Checkout</a>
+                        <p class="checkout-note">Please sign in to complete your purchase.</p>
                     <?php endif; ?>
                 </div>
             </div>

@@ -6,7 +6,7 @@
         <h1>Welcome to E-Store</h1>
         <p>Discover amazing products at great prices. Shop electronics, clothing, books, and more.</p>
         <a href="<?php echo url('/products.php'); ?>" class="hero-btn">
-            <i class="fas fa-shopping-bag"></i> Shop Now
+            Shop Now
         </a>
     </section>
 
@@ -15,7 +15,7 @@
         <?php if (!empty($categories)): ?>
             <div style="margin-bottom: 50px;">
                 <h2 class="section-title">
-                    <i class="fas fa-th-large"></i> Browse by Category
+                    Browse by Category
                 </h2>
                 <div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
                     <?php foreach ($categories as $cat): ?>
@@ -38,10 +38,10 @@
         <div style="margin-bottom: 40px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
                 <h2 class="section-title" style="margin-bottom:0;">
-                    <i class="fas fa-star"></i> Featured Products
+                    Featured Products
                 </h2>
                 <a href="<?php echo url('/products.php'); ?>" class="view-all-link">
-                    View All <i class="fas fa-arrow-right"></i>
+                    View All
                 </a>
             </div>
 
